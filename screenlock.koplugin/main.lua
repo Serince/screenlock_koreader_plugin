@@ -23,7 +23,7 @@ function ScreenLock:onDispatcherRegisterActions()
     Dispatcher:registerAction("screenlock_numpad_buttons_lock_screen", {
         category = "none",
         event = "LockScreenButtons",
-        title = _("Lock Screen (Numpad + Buttons)"),
+        title = _("Lock Screen"),
         filemanager = true,
     })
 end
@@ -62,7 +62,7 @@ end
 function ScreenLock:showNumpadPrompt()
     local dialog
     dialog = InputDialog:new{
-        title           = _("Enter Password (Numpad)"),
+        title           = _("Enter Password"),
         input           = self.current_input, -- Show current input
         maskinput       = true,
         text_type = "password",
@@ -167,7 +167,7 @@ end
 ------------------------------------------------------------------------------
 function ScreenLock:addToMainMenu(menu_items)
    menu_items.screenlock_numpad_buttons = {
-       text = _("Lock Screen (Numpad)"),
+       text = _("Lock Screen"),
        callback = function()
            self:lockScreen()
        end
