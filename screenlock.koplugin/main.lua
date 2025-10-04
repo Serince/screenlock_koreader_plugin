@@ -62,7 +62,7 @@ end
 function ScreenLock:showNumpadPrompt()
     local dialog
     dialog = InputDialog:new{
-        title           = _("Enter Password"),
+        title           = _("Enter Password (Numpad)"),
         input           = self.current_input, -- Show current input
         maskinput       = true,
         text_type = "password",
@@ -173,3 +173,5 @@ function ScreenLock:addToMainMenu(menu_items)
        end
   }
 end
+
+return ScreenLock
