@@ -72,24 +72,24 @@ function ScreenLock:showNumpadPrompt()
         buttons         = {
             -- Numpad Buttons
             {
-                {text = "1", callback = function() self:appendToInput("1"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "2", callback = function() self:appendToInput("2"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "3", callback = function() self:appendToInput("3"); UIManager:close(dialog); self:showNumpadPrompt() end},
+                {text = "1", callback = function() self:appendToInput("1", dialog) end},
+                {text = "2", callback = function() self:appendToInput("2", dialog) end},
+                {text = "3", callback = function() self:appendToInput("3", dialog) end},
             },
             {
-                {text = "4", callback = function() self:appendToInput("4"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "5", callback = function() self:appendToInput("5"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "6", callback = function() self:appendToInput("6"); UIManager:close(dialog); self:showNumpadPrompt() end},
+                {text = "4", callback = function() self:appendToInput("4", dialog) end},
+                {text = "5", callback = function() self:appendToInput("5", dialog) end},
+                {text = "6", callback = function() self:appendToInput("6", dialog) end},
             },
             {
-                {text = "7", callback = function() self:appendToInput("7"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "8", callback = function() self:appendToInput("8"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "9", callback = function() self:appendToInput("9"); UIManager:close(dialog); self:showNumpadPrompt() end},
+                {text = "7", callback = function() self:appendToInput("7", dialog) end},
+                {text = "8", callback = function() self:appendToInput("8", dialog) end},
+                {text = "9", callback = function() self:appendToInput("9", dialog) end},
             },
             {
-                {text = "*", callback = function() self:appendToInput("*"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "0", callback = function() self:appendToInput("0"); UIManager:close(dialog); self:showNumpadPrompt() end},
-                {text = "#", callback = function() self:appendToInput("#"); UIManager:close(dialog); self:showNumpadPrompt() end},
+                {text = "*", callback = function() self:appendToInput("*", dialog) end},
+                {text = "0", callback = function() self:appendToInput("0", dialog) end},
+                {text = "#", callback = function() self:appendToInput("#", dialog) end},
             },
             -- Action Buttons
             {
@@ -110,8 +110,7 @@ function ScreenLock:showNumpadPrompt()
                     text = _("Clear"),
                     callback = function()
                         self.current_input = ""
-                        UIManager:close(dialog)
-                        self:showNumpadPrompt()
+                        dialog:setInputText(self.current_input)
                     end
                 },
                 {
@@ -149,10 +148,10 @@ end
 ------------------------------------------------------------------------------
 -- Append to input
 ------------------------------------------------------------------------------
-function ScreenLock:appendToInput(digit)
+function ScreenLock:appendToInput(digit, dialog)
     self.current_input = self.current_input .. digit
+    dialog:setInputText(self.current_input)
 end
-
 
 ------------------------------------------------------------------------------
 -- DISPATCHER HANDLER
